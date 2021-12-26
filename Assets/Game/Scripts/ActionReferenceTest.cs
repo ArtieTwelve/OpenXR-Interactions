@@ -3,38 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/*
+  This is a test of getting Actions/References from the editor
+  As currently setup:
+    Left Primary will fire ColorChange
+    Either Secondary will do the same.
+    Left hand trigger also.
+
+   The left primary is specifically set to that Action. The other Action is 
+   set to fire with either the left or right secondary button. 
+   The left trigger is set to fire using an action reference. 
+*/
 public class ActionReferenceTest : MonoBehaviour
 {
-    [SerializeField] private InputAction leftPrimary, rightPrimary;
+    // An attempt to rename the inspector text did not work.
+    [InspectorName("Left Primary")] public InputAction leftPrimary;
+     [InspectorName("Right Secondary")] public InputAction eitherSecondary;
     [SerializeField] private InputActionReference actionReference;
     [SerializeField] private GameObject actionObject;
 
 
 
     void Awake()
-    {   // INPUTASSET BindingTreeItem{"m_Name":"","m_Id":"a1d431af-aba3-4f4c-a243-924d9987239f","m_Path":"<XRController>{LeftHand}/primaryButton","m_Interactions":"","m_Processors":"","m_Groups":"","m_Action":"Primary","m_Flags":0}
-        leftPrimary = new InputAction(name:"PrimaryButtons",binding: "<XRController>{LeftHand}/primaryButton");
-        leftPrimary.Enable();
-        leftPrimary.performed += ColorChange;//  {Debug.Log("Button Click: name: " + context.phase);};
+    {   
+      
+         leftPrimary.performed += ColorChange;
+         eitherSecondary.performed += ColorChange;
+         //TODO: give the trigger something better to do
+         // Action references need to get the action first and then register the callback
+         actionReference.action.performed += ColorChange;
+    }
+    
 
-        rightPrimary = new InputAction(name:"PrimaryButtons",binding: "<XRController>{RightHand}/primaryButton");
-        rightPrimary.Enable();
-        rightPrimary.performed += ColorChangeBack;
+    private void OnEnable() {
+      leftPrimary.Enable();
+      eitherSecondary.Enable();
+      actionReference.action.Enable();
+    }
+    private void OnDisable() {
+      leftPrimary.performed -= ColorChange;
+      eitherSecondary.performed -= ColorChange;
+      actionReference.action.performed -= ColorChange;
     }
 
     private void ColorChange(InputAction.CallbackContext context) {
-         // GetComponent<Renderer>().material.color = Color.grey;
-         actionObject.GetComponent<Renderer>().material.color = Color.grey;
+         // change to a random color
+         Color color = new Color(Random.value,Random.value,Random.value,Random.value);
+         actionObject.GetComponent<Renderer>().material.color = color;
     }
 
-    private void ColorChangeBack(InputAction.CallbackContext context) {
-         // GetComponent<Renderer>().material.color = Color.grey;
-         actionObject.GetComponent<Renderer>().material.color = Color.cyan;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }

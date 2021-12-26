@@ -1091,7 +1091,7 @@
             "id": "c4b52b0b-31b0-480d-b87d-a4da5a09ef7e",
             "actions": [
                 {
-                    "name": "Primary",
+                    "name": "Left Primary",
                     "type": "Button",
                     "id": "dc1fb475-5909-4ffe-a8cd-e5e6c5dd17fe",
                     "expectedControlType": "Button",
@@ -1100,9 +1100,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Secondary",
+                    "name": "Left Secondary",
                     "type": "Button",
                     "id": "22dd6a2a-64f3-4403-be18-4ed82d55c774",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Primary",
+                    "type": "Button",
+                    "id": "89793c74-d77d-4cb3-bee1-608d38cb709c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Secondary",
+                    "type": "Button",
+                    "id": "c73ad811-dda9-4bbb-af92-6af75e72d168",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1117,7 +1135,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Primary",
+                    "action": "Left Primary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1128,18 +1146,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Secondary",
+                    "action": "Left Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "3282d2b4-48dc-47fd-9c2a-bd0fbc310d74",
-                    "path": "<Gamepad>/buttonNorth",
+                    "id": "518e8d33-a4d7-4754-aa8f-862ebfef2e0e",
+                    "path": "<XRController>{RightHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Secondary",
+                    "action": "Right Primary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88115dd3-0452-49ec-9264-2d2cf31b1b6f",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

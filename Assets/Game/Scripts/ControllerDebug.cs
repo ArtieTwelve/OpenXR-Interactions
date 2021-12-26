@@ -33,7 +33,7 @@ public class ControllerDebug : MonoBehaviour
     {
         targetDevice.TryGetFeatureValue(CommonUsages.primaryButton,out bool primaryButtonValue);
         if(primaryButtonValue) {
-            Debug.Log("pressing primar button");
+            Debug.Log("pressing primary button");
         }
 
         targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
